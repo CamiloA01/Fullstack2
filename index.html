@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>No se</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+
+    <header>
+        <a href="index.html" id="nombre-pag">ArriendosFS</a>
+        <nav id="nav-header">
+        <ul>
+            <li><a href="#">Propiedades</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#" id="btn-inicio-sesion">Inicio de sesion</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contenedor-filtros">
+        <h3 id="titulo-filtro">Filtrar Búsqueda</h3>
+        <form id="form-filtro">
+            <div class="campo">
+            <label for="comuna">Comuna</label>
+            <select id="comuna">
+                <option value="">Todas</option>
+                <option value="providencia">Providencia</option>
+                <option value="santiago">Santiago</option>
+                <option value="las-condes">Las Condes</option>
+            </select>
+            </div>
+
+            <div class="campo">
+            <label for="tipo">Tipo de Inmueble</label>
+            <select id="tipo">
+                <option value="">Todos</option>
+                <option value="departamento">Departamento</option>
+                <option value="casa">Casa</option>
+            </select>
+            </div>
+
+            <div class="campo">
+            <label for="precio">Precio Máximo</label>
+            <input type="number" id="precio" placeholder="Ej: 500000">
+            </div>
+
+            <button type="button" id="btn-buscar">Buscar</button>
+        </form>
+        </section>
+
+        <section class="contenedor-catalogo">
+        <h2>Propiedades Disponibles</h2>
+        
+        <div class="grid-tarjetas">
+            
+            <article class="tarjeta">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0rPWKWiBY8YCHVSubOOQ-rGFrdm1U799_s_og515Jdw&s=10" alt="Departamento">
+            <div class="contenido-tarjeta">
+                <span class="badge">Disponible</span>
+                <h3>Dpto en Providencia</h3>
+                <p class="precio">$450.000 / mes</p>
+                <p>2 Dorm / 1 Baño</p>
+                <a href="#" class="btn-detalle">Ver Detalle</a>
+            </div>
+            </article>
+
+        </div>
+        </section>
+
+    </main>
+    
+    </body>
+</html>
