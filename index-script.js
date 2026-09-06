@@ -12,10 +12,36 @@ const texto_paginacion = document.querySelector('#texto-paginacion');
 const btn_pag_siguiente = document.querySelector('#btn-pag-siguiente');
 const btn_pag_ultima = document.querySelector('#btn-pag-ultima');
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sesionIniciada = sessionStorage.getItem('sesion_iniciada') || 'false';
+    const usuarioActivo = sessionStorage.getItem('usuario_activo') || '';
+
+    const itemUsuario = document.querySelector('#item-usuario');
+    const textoUsuario = document.querySelector('#texto-usuario');
+    const btnInicioSesion = document.querySelector('#btn-inicio-sesion');
+
+    if (sesionIniciada == 'true' && usuarioActivo != '') {
+        console.log(sesionIniciada, usuarioActivo)
+        textoUsuario.textContent = `${usuarioActivo}`;
+        itemUsuario.style.display = 'block';
+
+        btnInicioSesion.textContent = 'Cerrar sesión';
+        btnInicioSesion.style.backgroundColor = '#963535';
+        
+        btnInicioSesion.addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.setItem('sesion_iniciada', 'false');
+            sessionStorage.setItem('usuario_activo', '');
+            window.location.href = 'index.html';
+        });
+    }
+});
+
+
 let paginaActual = sessionStorage.getItem("paginaActual") || 1;
 sessionStorage.setItem("paginaActual", paginaActual);
 const ultima_pagina = 20;
-
 
 const filtrar_grid = () => {
     const comunaElegida = selectComuna.value;  
@@ -52,8 +78,6 @@ const guardarFiltros = () => {
     sessionStorage.setItem('filtro_tipo', selectTipo.value);
     sessionStorage.setItem('filtro_precio_min', inputPrecioMin.value);
     sessionStorage.setItem('filtro_precio_max', inputPrecioMax.value);
-
-    console.log("save filtros")
 }
 
 const cargarFiltros = () => {
@@ -68,7 +92,6 @@ const cargarFiltros = () => {
     if (maxGuardado !== null) inputPrecioMax.value = maxGuardado;
 
     filtrar_grid();
-    console.log("load filtros")
 }
 
 const reset_filter = () => {
@@ -85,7 +108,6 @@ const reset_filter = () => {
 
 
 cargarFiltros();
-
 
 btnReset.addEventListener('click', reset_filter);
 btnReset.addEventListener('click', guardarFiltros);

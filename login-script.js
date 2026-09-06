@@ -1,4 +1,3 @@
-
 const btn_ingresar = document.querySelector('#btn-ingresar');
 
 btn_ingresar.addEventListener('click', (e) => {
@@ -16,5 +15,8 @@ btn_ingresar.addEventListener('click', (e) => {
         return; 
     }
 
-    window.location.href = 'registro.html';
+    sessionStorage.setItem('usuario_activo', emailInput.value);
+    sessionStorage.setItem('sesion_iniciada', 'true');
+
+    window.location.href = 'index.html';
 });

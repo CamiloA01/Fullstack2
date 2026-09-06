@@ -35,6 +35,13 @@ header {
     font-size: 16px;
 }
 
+#item-usuario {
+    display: none;
+    align-self: center;
+    color: #f5ede6;
+    font-size: 0.9rem;
+}
+
 #btn-inicio-sesion {
     background-color: #5c2020;
     padding: 8px 16px;
