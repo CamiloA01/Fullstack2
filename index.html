@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>No se</title>
+        <title>Buscar propiedades</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
 
 
     <header>
-        <a href="index.html" id="nombre-pag">ArriendosFS</a>
+        <a href="index.html" id="nombre-pag">Rent a House</a>
         <nav id="nav-header">
         <ul>
             <li><a href="#">Propiedades</a></li>
@@ -43,8 +43,13 @@
             </div>
 
             <div class="campo">
+            <label for="precio">Precio Minimo</label>
+            <input type="number" id="precio_min" placeholder="Ej: 0">
+            </div>
+
+            <div class="campo">
             <label for="precio">Precio Máximo</label>
-            <input type="number" id="precio" placeholder="Ej: 500000">
+            <input type="number" id="precio_max" placeholder="Ej: 500000">
             </div>
 
             <button type="button" id="btn-buscar">Buscar</button>
@@ -54,12 +59,12 @@
         <section class="contenedor-catalogo">
         <h2>Propiedades Disponibles</h2>
         
-        <div class="grid-tarjetas">
+        <div class="grid-propiedades">
             
-            <article class="tarjeta">
+            <article class="info-propiedad">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0rPWKWiBY8YCHVSubOOQ-rGFrdm1U799_s_og515Jdw&s=10" alt="Departamento">
-            <div class="contenido-tarjeta">
-                <span class="badge">Disponible</span>
+            <div class="contenido-propiedad">
+                <span class="estado-propiedad">Disponible</span>
                 <h3>Dpto en Providencia</h3>
                 <p class="precio">$450.000 / mes</p>
                 <p>2 Dorm / 1 Baño</p>
@@ -67,7 +72,72 @@
             </div>
             </article>
 
+
+             <article class="info-propiedad">
+            <img src="https://cache.enlaceinmobiliario.cl/cdn-cgi/image/format=webp,width=auto,height=293/DiseosinttuloT.-683738bfacd817.webp" alt="Casa">
+            <div class="contenido-propiedad">
+                <span class="estado-propiedad">Disponible</span>
+                <h3>Casa en Las Condes</h3>
+                <p class="precio">$950.000 / mes</p>
+                <p>4 Dorm / 3 Baños</p>
+                <a href="#" class="btn-detalle">Ver Detalle</a>
+            </div>
+            </article>
+
+            <article class="info-propiedad">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZvKnG5Xv_4jPkBTbIH414GO9c1qU98kRMdAsPIR1vzffpo4Tww0I4xgZA&s=10" alt="Departamento">
+            <div class="contenido-propiedad">
+                <span class="estado-propiedad">Disponible</span>
+                <h3>Dpto en Santiago</h3>
+                <p class="precio">$320.000 / mes</p>
+                <p>1 Dorm / 1 Baño</p>
+                <a href="#" class="btn-detalle">Ver Detalle</a>
+            </div>
+            </article>
+
+            <article class="info-propiedad">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKdGm5MUOHX5bXEGTLJxtabIO2lG6jBqBHimjG5SM8obzz94jOzar3Nsk&s=10" alt="Casa">
+            <div class="contenido-propiedad">
+                <span class="estado-propiedad">Disponible</span>
+                <h3>Casa en Providencia</h3>
+                <p class="precio">$1.200.000 / mes</p>
+                <p>3 Dorm / 2 Baños</p>
+                <a href="#" class="btn-detalle">Ver Detalle</a>
+            </div>
+            </article>
+
+            <article class="info-propiedad">
+            <img src="https://demoazimg.prop360.cl/lgpropiedades/img/propiedades/6392_nnbeMgci0HUmYnceG5mj20260417162316.jpeg?sv=2021-06-08&ss=f&srt=sco&sp=r&se=2026-02-01T23:44:43Z&st=2022-09-12T15:44:43Z&spr=https&sig=8wumTxX67AEf8bZxCO8ZoRk9Jw6m8UWq2%2FYFAqMdnJw%3D" alt="Departamento">
+            <div class="contenido-propiedad">
+                <span class="estado-propiedad">Disponible</span>
+                <h3>Dpto en Las Condes</h3>
+                <p class="precio">$680.000 / mes</p>
+                <p>2 Dorm / 2 Baños</p>
+                <a href="#" class="btn-detalle">Ver Detalle</a>
+            </div>
+            </article>
+
+            <article class="info-propiedad">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7C5NhjurmxUzo-tINYx4J98oD-4_DEHmKnXCE_JnRT9NfnIbCYhZi4_F&s=10" alt="Departamento">
+            <div class="contenido-propiedad">
+                <span class="estado-propiedad">Disponible</span>
+                <h3>Dpto en Santiago</h3>
+                <p class="precio">$390.000 / mes</p>
+                <p>2 Dorm / 1 Baño</p>
+                <a href="#" class="btn-detalle">Ver Detalle</a>
+            </div>
+            </article>
+
         </div>
+
+        <div class="paginacion">
+            <button class="btn-paginacion" disabled> Primera</button>
+            <button class="btn-paginacion" disabled> Anterior</button>
+            <span class="texto-paginacion"> Pagina 1 de 10</span>
+            <button class="btn-paginacion"> Siguiente</button>
+            <button class="btn-paginacion"> Ultima</button>
+        </div>
+
         </section>
 
     </main>

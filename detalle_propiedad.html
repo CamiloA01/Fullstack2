@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalle de Propiedad - Rent a House</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+    <header>
+        <a href="index.html" id="nombre-pag">Rent a House</a>
+        <nav id="nav-header">
+        <ul>
+            <li><a href="index.html">Propiedades</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#" id="btn-inicio-sesion">Inicio de sesion</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contenedor-detalle">
+            
+            <div style="max-width: 900px; margin: 20px auto 0 auto;">
+                <a href="index.html" class="btn-volver">&larr; Volver al buscador</a>
+            </div>
+
+            <div class="detalle-grid">             
+                <div class="detalle-imagenes">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&auto=format&fit=crop&q=60" alt="Vista Principal Dpto" class="img-principal">
+                    <div class="galeria-minaturas">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=200&auto=format&fit=crop&q=60" alt="Interior 1">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=200&auto=format&fit=crop&q=60" alt="Interior 2">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&auto=format&fit=crop&q=60" alt="Interior 3">
+                    </div>
+                </div>
+
+                <div class="detalle-info">
+                    <span class="estado-propiedad">Disponible</span>
+                    <h2>Departamento Moderno en Providencia</h2>
+                    <p class="precio">$450.000 / mes</p>
+                    
+                    <div class="caracteristicas-clave">
+                        <p><strong>Comuna:</strong> Providencia</p>
+                        <p><strong>Tipo:</strong> Departamento</p>
+                        <p><strong>Dormitorios:</strong> 2</p>
+                        <p><strong>Baños:</strong> 1</p>
+                        <p><strong>Superficie:</strong> 65 m²</p>
+                    </div>
+
+                    <p class="descripcion-propiedad">
+                        Hermoso departamento ubicado en sector residencial y tranquilo de Providencia. Excelente conectividad, cercano a estaciones de metro, comercio y áreas verdes. Cocina amoblada y equipada, conexión para lavadora y amplio living-comedor.
+                    </p>
+
+                    <div class="contenedor-consulta">
+                        <h3>Consultar por esta Propiedad</h3>
+                        <form id="form-consulta">
+                            <div class="campo">
+                                <label for="nombre">Nombre Completo</label>
+                                <input type="text" id="nombre" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="campo">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" placeholder="tucorreo@email.com" required>
+                            </div>
+                            <div class="campo">
+                                <label for="mensaje">Mensaje / Solicitud</label>
+                                <textarea id="mensaje" rows="3" placeholder="Me interesa agendar una visita..."></textarea>
+                            </div>
+                            <button type="button" id="btn-enviar-consulta">Enviar Solicitud</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    
+    </body>
+</html>
