@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registrar Nueva Propiedad - Rent a House</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+    <header>
+        <a href="index.html" id="nombre-pag">Rent a House</a>
+        <nav id="nav-header">
+            <ul>
+                <li><a href="index.html">Propiedades</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><span style="color: #f5ede6; font-size: 0.9rem; align-self: center;">👤 ejecutivo@rentahouse.cl</span></li>
+                <li><a href="login.html" id="btn-inicio-sesion" style="background-color: #963535;">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contenedor-registro" style="max-width: 800px; margin: 40px auto; background-color: #ffffff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            
+            <div style="margin-bottom: 1.5rem;">
+                <a href="index.html" class="btn-volver">&larr; Volver al catálogo</a>
+                <h2 style="color: #2a1a1a; font-size: 1.8rem; margin-top: 0.5rem;">Registrar Nueva Propiedad</h2>
+                <p class="subtitulo-login" style="text-align: left; margin-bottom: 0;">Panel de control exclusivo para Ejecutivos de Arriendos</p>
+            </div>
+
+            <form id="form-registro" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                
+                <div class="campo" style="width: 100%;">
+                    <label for="titulo-propiedad">Título de la Propiedad</label>
+                    <input type="text" id="titulo-propiedad" placeholder="Ej: Moderno Departamento en Providencia" required>
+                </div>
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="campo">
+                        <label for="comuna-reg">Comuna</label>
+                        <select id="comuna-reg" required>
+                            <option value="">Seleccione comuna</option>
+                            <option value="providencia">Providencia</option>
+                            <option value="santiago">Santiago</option>
+                            <option value="las-condes">Las Condes</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="tipo-reg">Tipo de Inmueble</label>
+                        <select id="tipo-reg" required>
+                            <option value="">Seleccione tipo</option>
+                            <option value="departamento">Departamento</option>
+                            <option value="casa">Casa</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="campo">
+                        <label for="precio-reg">Precio Mensual ($)</label>
+                        <input type="number" id="precio-reg" placeholder="Ej: 450000" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="estado-reg">Estado Inicial</label>
+                        <select id="estado-reg" required>
+                            <option value="disponible">Disponible</option>
+                            <option value="reservada">Reservada</option>
+                            <option value="arrendada">Arrendada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="campo">
+                        <label for="dormitorios-reg">Dormitorios</label>
+                        <input type="number" id="dormitorios-reg" placeholder="Ej: 2" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="banos-reg">Baños</label>
+                        <input type="number" id="banos-reg" placeholder="Ej: 1" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="superficie-reg">Superficie (m²)</label>
+                        <input type="number" id="superficie-reg" placeholder="Ej: 65" required>
+                    </div>
+                </div>
+
+                <div class="campo" style="width: 100%;">
+                    <label for="foto-principal">Fotografía Principal del Inmueble</label>
+                    <input type="file" id="foto-principal" accept="image/*" required style="padding: 0.4rem; background-color: #fcf8f6;">
+                </div>
+
+                <div class="campo" style="width: 100%;">
+                    <label for="descripcion-reg">Descripción detallada</label>
+                    <textarea id="descripcion-reg" rows="4" placeholder="Ingrese detalles de conectividad, equipamiento, etc..." style="padding: 0.5rem; border: 1px solid #cccccc; border-radius: 4px; font-family: inherit; resize: vertical;" required></textarea>
+                </div>
+
+                <button type="submit" id="btn-guardar-propiedad" style="background-color: #5c2020; color: #ffffff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 1rem; margin-top: 1rem;">Publicar Propiedad</button>
+            </form>
+
+        </section>
+    </main>
+    
+    </body>
+</html>

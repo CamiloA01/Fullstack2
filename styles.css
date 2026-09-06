@@ -320,3 +320,73 @@ header {
 #btn-enviar-consulta:hover {
     background-color: #421616;
 }
+
+
+#contenedor-login {
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 0 1rem;
+}
+
+.caja-login {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.caja-login h2 {
+    color: #2a1a1a;
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+    text-align: center;
+}
+
+.subtitulo-login {
+    font-size: 0.85rem;
+    color: #666666;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+#form-login .campo {
+    width: 100%;
+}
+
+#btn-ingresar {
+    background-color: #5c2020;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 0.5px;
+}
+
+#btn-ingresar:hover {
+    background-color: #421616;
+}
+
+.enlaces-login {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.enlaces-login a {
+    color: #5c2020;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.enlaces-login a:hover {
+    text-decoration: underline;
+}
