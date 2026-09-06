@@ -1,74 +1,143 @@
-// ============================================
-// FILTRO DE BÚSQUEDA - Catálogo de propiedades
-// ============================================
-
-// 1. Referencias a los elementos del filtro (uno solo cada uno -> querySelector)
 const selectComuna = document.querySelector('#comuna');
 const selectTipo = document.querySelector('#tipo');
 const inputPrecioMin = document.querySelector('#precio_min');
 const inputPrecioMax = document.querySelector('#precio_max');
+const btnReset = document.querySelector('#btn-reset');
 const btnBuscar = document.querySelector('#btn-buscar');
 
-// 2. Referencia a TODAS las tarjetas de propiedades (varias -> querySelectorAll)
-const tarjetasPropiedades = document.querySelectorAll('.info-propiedad');
 
-// 3. Cuando el usuario hace click en "Buscar", filtramos
-btnBuscar.addEventListener('click', () => {
-    filtrarPropiedades();
-});
+const btn_pag_primera = document.querySelector('#btn-pag-primera');
+const btn_pag_anterior = document.querySelector('#btn-pag-anterior');
+const texto_paginacion = document.querySelector('#texto-paginacion');
+const btn_pag_siguiente = document.querySelector('#btn-pag-siguiente');
+const btn_pag_ultima = document.querySelector('#btn-pag-ultima');
 
-function filtrarPropiedades() {
-    // Leemos lo que el usuario eligió en el formulario
-    const comunaElegida = selectComuna.value;       // "" significa "Todas"
-    const tipoElegido = selectTipo.value;            // "" significa "Todos"
+let paginaActual = sessionStorage.getItem("paginaActual") || 1;
+sessionStorage.setItem("paginaActual", paginaActual);
+const ultima_pagina = 20;
 
-    // Si el campo de precio está vacío, no debe restringir ese límite
-    const precioMin = inputPrecioMin.value !== '' ? Number(inputPrecioMin.value) : 0;
-    const precioMax = inputPrecioMax.value !== '' ? Number(inputPrecioMax.value) : Infinity;
+
+const filtrar_grid = () => {
+    const comunaElegida = selectComuna.value;  
+    const tipoElegido = selectTipo.value;   
+
+    const precioMin = inputPrecioMin.value.trim() !== '' ? Number(inputPrecioMin.value) : 0;
+    const precioMax = inputPrecioMax.value.trim() !== '' ? Number(inputPrecioMax.value) : Infinity;
 
     let hayResultados = false;
+    const tarjetasPropiedades = document.querySelectorAll('.info-propiedad');
 
-    // Recorremos cada tarjeta una por una
     tarjetasPropiedades.forEach((tarjeta) => {
         const comunaTarjeta = tarjeta.dataset.comuna;
         const tipoTarjeta = tarjeta.dataset.tipo;
         const precioTarjeta = Number(tarjeta.dataset.precio);
 
-        // ¿Calza con la comuna? (si el usuario no eligió comuna, siempre calza)
         const calzaComuna = (comunaElegida === '') || (comunaTarjeta === comunaElegida);
 
-        // ¿Calza con el tipo? (si el usuario no eligió tipo, siempre calza)
         const calzaTipo = (tipoElegido === '') || (tipoTarjeta === tipoElegido);
 
-        // ¿Calza con el rango de precio?
         const calzaPrecio = (precioTarjeta >= precioMin) && (precioTarjeta <= precioMax);
 
-        // Si cumple las 3 condiciones, se muestra; si no, se esconde
         if (calzaComuna && calzaTipo && calzaPrecio) {
-            tarjeta.style.display = '';
-            hayResultados = true;
+            tarjeta.style.display = 'flex';
+              hayResultados = true;
         } else {
             tarjeta.style.display = 'none';
         }
     });
-
-    mostrarMensajeSinResultados(!hayResultados);
 }
 
-// 4. (Opcional) Mensaje cuando ningún resultado calza con el filtro
-function mostrarMensajeSinResultados(mostrar) {
-    let mensaje = document.querySelector('#mensaje-sin-resultados');
+const guardarFiltros = () => {
+    sessionStorage.setItem('filtro_comuna', selectComuna.value);
+    sessionStorage.setItem('filtro_tipo', selectTipo.value);
+    sessionStorage.setItem('filtro_precio_min', inputPrecioMin.value);
+    sessionStorage.setItem('filtro_precio_max', inputPrecioMax.value);
 
-    if (mostrar) {
-        if (!mensaje) {
-            mensaje = document.createElement('p');
-            mensaje.id = 'mensaje-sin-resultados';
-            mensaje.textContent = 'No se encontraron propiedades con esos filtros.';
-            document.querySelector('.grid-propiedades').after(mensaje);
-        }
-    } else {
-        if (mensaje) {
-            mensaje.remove();
-        }
-    }
+    console.log("save filtros")
 }
+
+const cargarFiltros = () => {
+    const comunaGuardada = sessionStorage.getItem('filtro_comuna');
+    const tipoGuardado = sessionStorage.getItem('filtro_tipo');
+    const minGuardado = sessionStorage.getItem('filtro_precio_min');
+    const maxGuardado = sessionStorage.getItem('filtro_precio_max');
+
+    if (comunaGuardada !== null) selectComuna.value = comunaGuardada;
+    if (tipoGuardado !== null) selectTipo.value = tipoGuardado;
+    if (minGuardado !== null) inputPrecioMin.value = minGuardado;
+    if (maxGuardado !== null) inputPrecioMax.value = maxGuardado;
+
+    filtrar_grid();
+    console.log("load filtros")
+}
+
+const reset_filter = () => {
+    selectComuna.value = "";
+    selectTipo.value = "";
+    inputPrecioMin.value = "";
+    inputPrecioMax.value = "";
+
+    const tarjetasPropiedades = document.querySelectorAll('.info-propiedad');
+    tarjetasPropiedades.forEach(propiedad => {
+        propiedad.style.display = "flex";
+    });
+}
+
+
+cargarFiltros();
+
+
+btnReset.addEventListener('click', reset_filter);
+btnReset.addEventListener('click', guardarFiltros);
+
+btnBuscar.addEventListener('click', guardarFiltros);
+btnBuscar.addEventListener('click', filtrar_grid);
+
+
+texto_paginacion.textContent = "Pagina " + paginaActual + " de " + ultima_pagina;
+
+if(paginaActual > 1){
+    btn_pag_primera.disabled = false;
+    btn_pag_anterior.disabled = false;
+}
+else{
+    btn_pag_primera.disabled = true;
+    btn_pag_anterior.disabled = true;
+}
+
+if(paginaActual >= ultima_pagina){
+    btn_pag_siguiente.disabled = true;
+    btn_pag_ultima.disabled = true;
+}
+else{
+    btn_pag_siguiente.disabled = false;
+    btn_pag_ultima.disabled = false;
+}
+
+btn_pag_primera.addEventListener("click", () => {
+    paginaActual = 1;
+    sessionStorage.setItem("paginaActual", paginaActual);   
+    location.reload();
+});
+btn_pag_anterior.addEventListener("click", () => {
+    paginaActual = Math.max(Number(paginaActual) - 1, 1) ;
+    sessionStorage.setItem("paginaActual", paginaActual);   
+    location.reload();
+});
+
+btn_pag_siguiente.addEventListener("click", () => {
+    paginaActual = Math.min(Number(paginaActual) + 1, ultima_pagina) ;
+    sessionStorage.setItem("paginaActual", paginaActual);   
+    location.reload();
+});
+
+btn_pag_ultima.addEventListener("click", () => {
+    paginaActual = ultima_pagina;
+    sessionStorage.setItem("paginaActual", paginaActual);   
+    location.reload();
+});
+
+
+
+
+
