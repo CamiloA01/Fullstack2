@@ -1,5 +1,6 @@
 const selectComuna = document.querySelector('#comuna');
-const selectTipo = document.querySelector('#tipo');
+const selectTipo = document.querySelector('#tipo');    
+const selectEstado = document.querySelector('#estado');
 const inputPrecioMin = document.querySelector('#precio_min');
 const inputPrecioMax = document.querySelector('#precio_max');
 const btnReset = document.querySelector('#btn-reset');
@@ -16,7 +17,7 @@ const btn_pag_ultima = document.querySelector('#btn-pag-ultima');
 document.addEventListener('DOMContentLoaded', () => {
     const sesionIniciada = sessionStorage.getItem('sesion_iniciada') || 'false';
     const usuarioActivo = sessionStorage.getItem('usuario_activo') || '';
-
+    const item_registro = document.querySelector('#item-registro');
     const itemUsuario = document.querySelector('#item-usuario');
     const textoUsuario = document.querySelector('#texto-usuario');
     const btnInicioSesion = document.querySelector('#btn-inicio-sesion');
@@ -25,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(sesionIniciada, usuarioActivo)
         textoUsuario.textContent = `${usuarioActivo}`;
         itemUsuario.style.display = 'block';
+
+        if (item_registro) {
+            item_registro.textContent = 'Propiedades';
+            item_registro.href = 'registro.html';
+            item_registro.style.display = 'inline';
+        }
 
         btnInicioSesion.textContent = 'Cerrar sesión';
         btnInicioSesion.style.backgroundColor = '#963535';
@@ -36,6 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'index.html';
         });
     }
+
+    const estados = document.querySelectorAll('.estado-propiedad');
+    estados.forEach(span => {
+        const textoEstado = span.textContent.trim().toLowerCase();
+
+        if (textoEstado === 'disponible') {
+            span.style.backgroundColor = '#16a34a';
+            span.style.color = '#ffffff';
+        } else if (textoEstado === 'reservado') {
+            span.style.backgroundColor = '#eab308';
+            span.style.color = '#000000';
+        } else if (textoEstado === 'arrendado') {
+            span.style.backgroundColor = '#dc2626';
+            span.style.color = '#ffffff';
+        }   
+    });
+
+    if (textoEstado === 'disponible') {
+            span.style.backgroundColor = '#16a34a'; // Verde
+            span.style.color = '#ffffff';
+        } else if (textoEstado === 'reservada') {
+            span.style.backgroundColor = '#eab308'; // Amarillo
+            span.style.color = '#000000'; // Texto oscuro para mejor lectura
+        } else if (textoEstado === 'arrendado') {
+            span.style.backgroundColor = '#dc2626'; // Rojo
+            span.style.color = '#ffffff';
+        }
 });
 
 
@@ -46,27 +80,30 @@ const ultima_pagina = 20;
 const filtrar_grid = () => {
     const comunaElegida = selectComuna.value;  
     const tipoElegido = selectTipo.value;   
-
+    const estadoElegido = selectEstado.value;
     const precioMin = inputPrecioMin.value.trim() !== '' ? Number(inputPrecioMin.value) : 0;
     const precioMax = inputPrecioMax.value.trim() !== '' ? Number(inputPrecioMax.value) : Infinity;
 
     let hayResultados = false;
     const tarjetasPropiedades = document.querySelectorAll('.info-propiedad');
-
     tarjetasPropiedades.forEach((tarjeta) => {
         const comunaTarjeta = tarjeta.dataset.comuna;
+        const tipoEstado = tarjeta.dataset.estado;
         const tipoTarjeta = tarjeta.dataset.tipo;
+        
         const precioTarjeta = Number(tarjeta.dataset.precio);
 
         const calzaComuna = (comunaElegida === '') || (comunaTarjeta === comunaElegida);
 
         const calzaTipo = (tipoElegido === '') || (tipoTarjeta === tipoElegido);
 
+        const calzaEstado = (estadoElegido === '') || (tipoEstado === estadoElegido);
+
         const calzaPrecio = (precioTarjeta >= precioMin) && (precioTarjeta <= precioMax);
 
-        if (calzaComuna && calzaTipo && calzaPrecio) {
+        if (calzaComuna && calzaTipo && calzaEstado && calzaPrecio) {
             tarjeta.style.display = 'flex';
-              hayResultados = true;
+            hayResultados = true;
         } else {
             tarjeta.style.display = 'none';
         }
@@ -76,6 +113,7 @@ const filtrar_grid = () => {
 const guardarFiltros = () => {
     sessionStorage.setItem('filtro_comuna', selectComuna.value);
     sessionStorage.setItem('filtro_tipo', selectTipo.value);
+    sessionStorage.setItem('filtro_estado', selectEstado.value);
     sessionStorage.setItem('filtro_precio_min', inputPrecioMin.value);
     sessionStorage.setItem('filtro_precio_max', inputPrecioMax.value);
 }
@@ -83,11 +121,14 @@ const guardarFiltros = () => {
 const cargarFiltros = () => {
     const comunaGuardada = sessionStorage.getItem('filtro_comuna');
     const tipoGuardado = sessionStorage.getItem('filtro_tipo');
+    const estadoGuardado = sessionStorage.getItem('filtro_estado');
     const minGuardado = sessionStorage.getItem('filtro_precio_min');
     const maxGuardado = sessionStorage.getItem('filtro_precio_max');
 
+
     if (comunaGuardada !== null) selectComuna.value = comunaGuardada;
     if (tipoGuardado !== null) selectTipo.value = tipoGuardado;
+    if (estadoGuardado !== null) selectEstado.value = estadoGuardado;
     if (minGuardado !== null) inputPrecioMin.value = minGuardado;
     if (maxGuardado !== null) inputPrecioMax.value = maxGuardado;
 
@@ -99,11 +140,14 @@ const reset_filter = () => {
     selectTipo.value = "";
     inputPrecioMin.value = "";
     inputPrecioMax.value = "";
-
+    selectEstado.value = "";
+    inputPrecioMin.value = "";
+    inputPrecioMax.value = "";
     const tarjetasPropiedades = document.querySelectorAll('.info-propiedad');
     tarjetasPropiedades.forEach(propiedad => {
         propiedad.style.display = "flex";
     });
+
 }
 
 

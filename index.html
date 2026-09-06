@@ -13,6 +13,7 @@
         <nav id="nav-header">
         <ul>
             <li><a href="#">Contacto</a></li>
+            <li><a href="registro.html" id="item-registro" style="display: none;">Registro</a></li>
             <li id="item-usuario" style="display: none;"> <span id="texto-usuario"></span></li>
             <li><a href="login.html" id="btn-inicio-sesion">Inicio de sesion</a></li>
         </ul>
@@ -43,6 +44,15 @@
             </div>
 
             <div class="campo">
+            <label for="estado">Estado</label>
+                <select id="estado">
+                    <option value="">Todos</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="reservado">Reservado</option>
+                    <option value="arrendado">Arrendado</option>
+                </select>
+            </div>
+            <div class="campo">
             <label for="precio">Precio Minimo</label>
             <input type="number" id="precio_min" placeholder="Ej: 0" min="0">
             </div>
@@ -61,8 +71,8 @@
         <h2>Propiedades Disponibles</h2>
         
         <div class="grid-propiedades">
-            
-            <article class="info-propiedad" data-comuna="providencia" data-tipo="departamento" data-precio="450000">
+    
+            <article class="info-propiedad" data-comuna="providencia" data-tipo="departamento" data-estado="disponible" data-precio="450000">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0rPWKWiBY8YCHVSubOOQ-rGFrdm1U799_s_og515Jdw&s=10" alt="Departamento">
                 <div class="contenido-propiedad">
                     <h3>Departamento</h3>
@@ -75,7 +85,7 @@
                 </div>
             </article>
 
-            <article class="info-propiedad" data-comuna="las-condes" data-tipo="casa" data-precio="950000">
+            <article class="info-propiedad" data-comuna="las-condes" data-tipo="casa" data-estado="disponible" data-precio="950000">
                 <img src="https://cache.enlaceinmobiliario.cl/cdn-cgi/image/format=webp,width=auto,height=293/DiseosinttuloT.-683738bfacd817.webp" alt="Casa">
                 <div class="contenido-propiedad">
                     <h3>Casa</h3>
@@ -88,7 +98,7 @@
                 </div>
             </article>
 
-            <article class="info-propiedad" data-comuna="santiago" data-tipo="departamento" data-precio="320000">
+            <article class="info-propiedad" data-comuna="santiago" data-tipo="departamento" data-estado="reservado" data-precio="320000">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZvKnG5Xv_4jPkBTbIH414GO9c1qU98kRMdAsPIR1vzffpo4Tww0I4xgZA&s=10" alt="Departamento">
                 <div class="contenido-propiedad">
                     <h3>Departamento</h3>
@@ -96,12 +106,12 @@
                     <p class="direccion-propiedad">Moneda 1450</p>
                     <p class="precio">$320.000 / mes</p>
                     <p>1 Dorm / 1 Baño</p>
-                    <span class="estado-propiedad">Disponible</span>
+                    <span class="estado-propiedad">Reservado</span>
                     <a href="detalles.html" class="btn-detalle">Ver Detalle</a>
                 </div>
             </article>
 
-            <article class="info-propiedad" data-comuna="providencia" data-tipo="casa" data-precio="1200000">
+            <article class="info-propiedad" data-comuna="providencia" data-tipo="casa" data-estado="disponible" data-precio="1200000">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKdGm5MUOHX5bXEGTLJxtabIO2lG6jBqBHimjG5SM8obzz94jOzar3Nsk&s=10" alt="Casa">
                 <div class="contenido-propiedad">
                     <h3>Casa</h3>
@@ -114,7 +124,7 @@
                 </div>
             </article>
 
-            <article class="info-propiedad" data-comuna="las-condes" data-tipo="departamento" data-precio="680000">
+            <article class="info-propiedad" data-comuna="las-condes" data-tipo="departamento" data-estado="reservado" data-precio="680000">
                 <img src="https://demoazimg.prop360.cl/lgpropiedades/img/propiedades/6392_nnbeMgci0HUmYnceG5mj20260417162316.jpeg?sv=2021-06-08&ss=f&srt=sco&sp=r&se=2026-02-01T23:44:43Z&st=2022-09-12T15:44:43Z&spr=https&sig=8wumTxX67AEf8bZxCO8ZoRk9Jw6m8UWq2%2FYFAqMdnJw%3D" alt="Departamento">
                 <div class="contenido-propiedad">
                     <h3>Departamento</h3>
@@ -122,12 +132,12 @@
                     <p class="direccion-propiedad">Av. Vitacura 4520</p>
                     <p class="precio">$680.000 / mes</p>
                     <p>2 Dorm / 2 Baños</p>
-                    <span class="estado-propiedad">Disponible</span>
+                    <span class="estado-propiedad">Reservado</span>
                     <a href="detalles.html" class="btn-detalle">Ver Detalle</a>
                 </div>
             </article>
 
-            <article class="info-propiedad" data-comuna="santiago" data-tipo="departamento" data-precio="390000">
+            <article class="info-propiedad" data-comuna="santiago" data-tipo="departamento" data-estado="arrendado" data-precio="390000">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7C5NhjurmxUzo-tINYx4J98oD-4_DEHmKnXCE_JnRT9NfnIbCYhZi4_F&s=10" alt="Departamento">
                 <div class="contenido-propiedad">
                     <h3>Departamento</h3>
@@ -135,7 +145,7 @@
                     <p class="direccion-propiedad">San Francisco 320</p>
                     <p class="precio">$390.000 / mes</p>
                     <p>2 Dorm / 1 Baño</p>
-                    <span class="estado-propiedad">Disponible</span>
+                    <span class="estado-propiedad">Arrendado</span>
                     <a href="detalles.html" class="btn-detalle">Ver Detalle</a>
                 </div>
             </article>
