@@ -430,3 +430,78 @@ header {
 .enlaces-login a:hover {
     text-decoration: underline;
 }
+
+#contenedor-pend {
+    max-width: 500px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    border-left: 5px solid #5c2020;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contenedor-pend h2 {
+    color: #2a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+#contenedor-pend p {
+    color: #5c4c4c;
+}
+
+.cabecera-registradas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.datos-administracion {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    border-top: 1px solid #ddd;
+    padding-top: 0.8rem;
+}
+
+.datos-administracion li {
+    margin-bottom: 0.5rem;
+}
+
+.txt-exito {
+    color: #155724;
+    font-weight: bold;
+}
+
+.txt-peligro {
+    color: #721c24;
+    font-weight: bold;
+}
+
+.estado-mantencion {
+    background-color: #856404;
+    color: #fffefa;
+}
+
+#titulo-propiedades-gestor {
+    padding: 30px 0 0 0;
+}
+
+.btn-detalle-propiedades {
+    display: inline-block;
+    text-align: center;
+    background-color: #5c2020;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin-top: 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    
+}
