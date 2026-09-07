@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemUsuario = document.querySelector('#item-usuario');
     const textoUsuario = document.querySelector('#texto-usuario');
     const btnInicioSesion = document.querySelector('#btn-inicio-sesion');
+    const formRegistro = document.querySelector('#form-registro');
+    const contenedorPend = document.querySelector('#contenerdor-pend');
+    const btnNuevaSolicitud = document.querySelector('#btn-nueva-solicitud');
 
     if (sesionIniciada == 'true' && usuarioActivo != '') {
         console.log(sesionIniciada, usuarioActivo)
@@ -26,5 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.setItem('usuario_activo', '');
             window.location.href = 'index.html';
         });
-    }
+    };
+    formRegistro.addEventListener('submit', (e) => {
+        e.preventDefault();
+        formRegistro.style.display = 'none';
+        contenedorPend.style.display = 'block';
+        document.querySelector('#titulo-reg-catalogo').textContent = 'Solicitud en revisión';
+        document.querySelector('.subtitulo-login').textContent = 'Su solicitud se encuentra en revisión. En breve recibirá un correo con la confirmación de su solicitud.';
+    });
 })
+
+
