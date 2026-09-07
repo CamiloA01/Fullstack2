@@ -10,10 +10,12 @@
     <header>
         <a href="index.html" id="nombre-pag">Rent a House</a>
         <nav id="nav-header">
-        <ul>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="login.html" id="btn-inicio-sesion">Inicio de sesion</a></li>        
-        </ul>
+            <ul>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="registro.html" id="item-registro" style="display: none;">Registro</a></li>
+                <li id="item-usuario" style="display: none;"> <span id="texto-usuario"></span></li>
+                <li><a href="login.html" id="btn-inicio-sesion">Inicio de sesion</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -61,7 +63,7 @@
                             
                             <div class="campo">
                                 <label for="telefono">Número de Teléfono</label>
-                                <input type="tel" id="telefono" placeholder="+56 9 1234 5678" required>
+                                <input type="tel" id="telefono" placeholder="+56 9 1234 5678" minlength="12" maxlength="12" required>
                             </div>
 
                             <div class="campo">
@@ -72,7 +74,7 @@
                                 <label for="mensaje">Mensaje / Solicitud</label>
                                 <textarea id="mensaje" rows="3" placeholder="Me interesa agendar una visita..."></textarea>
                             </div>
-                            <button type="button" id="btn-enviar-consulta">Enviar Solicitud</button>
+                            <button type="submit" id="btn-enviar-consulta">Enviar Solicitud</button>
                         </form>
                     </div>
 
@@ -82,6 +84,6 @@
 
         </section>
     </main>
-    
+    <script src="detalles_script.js" ></script>
     </body>
 </html>

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnInicioSesion = document.querySelector('#btn-inicio-sesion');
 
     if (sesionIniciada == 'true' && usuarioActivo != '') {
-        console.log(sesionIniciada, usuarioActivo)
+        
         textoUsuario.textContent = `${usuarioActivo}`;
         itemUsuario.style.display = 'block';
 
@@ -59,17 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             span.style.color = '#ffffff';
         }   
     });
-
-    if (textoEstado === 'disponible') {
-            span.style.backgroundColor = '#16a34a'; // Verde
-            span.style.color = '#ffffff';
-        } else if (textoEstado === 'reservada') {
-            span.style.backgroundColor = '#eab308'; // Amarillo
-            span.style.color = '#000000'; // Texto oscuro para mejor lectura
-        } else if (textoEstado === 'arrendado') {
-            span.style.backgroundColor = '#dc2626'; // Rojo
-            span.style.color = '#ffffff';
-        }
 });
 
 

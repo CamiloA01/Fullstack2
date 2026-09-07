@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnInicioSesion = document.querySelector('#btn-inicio-sesion');
 
     if (sesionIniciada == 'true' && usuarioActivo != '') {
+
         textoUsuario.textContent = `${usuarioActivo}`;
         itemUsuario.style.display = 'block';
 
@@ -26,4 +27,37 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'index.html';
         });
     }
+
+    const btn_enviar_consulta = document.querySelector("#btn-enviar-consulta");
+    
+    btn_enviar_consulta.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("submit");
+        const nombre = document.querySelector("#nombre");
+        const telefono = document.querySelector("#telefono");
+        const email = document.querySelector("#email");
+        const mensaje = document.querySelector("#mensaje");
+
+        if (!nombre.checkValidity()){
+            nombre.reportValidity();
+            return; 
+        }
+
+        if(!telefono.checkValidity()){
+            telefono.reportValidity();
+            return; 
+        }
+
+        if(!email.checkValidity()){
+            email.reportValidity();
+            return; 
+        }
+
+        if(!mensaje.checkValidity()){
+            mensaje.reportValidity();
+            return; 
+        }
+
+        alert("Solicitud mandada de exitosamente.")
+    })
 })
